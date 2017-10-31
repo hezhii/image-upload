@@ -3,6 +3,8 @@ const http = require('http');
 const multiparty = require('multiparty');
 const path = require('path');
 const fs = require('fs');
+const sharp = require('sharp');
+const uuidv1 = require('uuid/v1');
 
 const app = express();
 
@@ -32,14 +34,13 @@ function handleUpload(req, res, next) {
       return res.json('文件大小超过 2 MB');
     }
     const file = files.avatar[0];
-    fs.rename(path.normalize(file.path), uploadDir + file.originalFilename, function (err) {
+    sharp(file.path).resize(638).toFile(uploadDir + uuidv1() + '.jpeg', function (err) {
       if (err) {
         console.log(err);
-        res.json('上传文件失败');
+        return res.json('上传失败');
       }
-      else {
-        res.json('上传成功');
-      }
+      fs.unlink(file.path);
+      res.json('上传成功');
     });
   });
 }
