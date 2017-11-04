@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "author": "",
+  "author": "biu",
   "dependencies": {
     "express": "^4.16.2",
     "mkdirp": "^0.5.1",
