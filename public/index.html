@@ -11,17 +11,21 @@
 <body>
 <div class="page-wrapper">
   <div class="main">
-    <div class="toolbar">
-      <a class="upload-button shadow">
-        <span>选择图片</span>
-        <form action="javascript:void(0);" class="form-hide">
-          <input title="点击选择文件" class="form-hide" id="h5FileInput" multiple="" accept="image/*" type="file"
-                 name="h5uploader">
-        </form>
-      </a>
+    <div class="header">
+      <label class="btn" for="h5FileInput">
+        <input title="点击选择文件" class="form-hide" id="h5FileInput" multiple="" accept="image/*" type="file"
+               name="h5uploader">
+        选择图片
+      </label>
     </div>
     <div class="preview-container">
-      <img id="preview" width="100%" class="shadow" height="auto">
+      <div class="img-container">
+        <span class="placeholder icon-upload"></span>
+        <img id="preview">
+      </div>
+    </div>
+    <div class="footer">
+      <button id="btn_save" class="btn" disabled="disabled">保存</button>
     </div>
   </div>
 </div>

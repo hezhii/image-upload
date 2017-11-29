@@ -10,13 +10,12 @@ body {
 
 .main {
   margin: 0 auto;
-  padding: 15px;
   width: 500px;
-  min-height: 400px;
+  padding: 20px 15px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.upload-button {
+.btn {
   position: relative;
   display: inline-block;
   padding: 6px 12px;
@@ -29,23 +28,44 @@ body {
   border-radius: 3px;
   color: #fff;
   background-color: #4285f4;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
 }
 
-.shadow {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+.btn[disabled] {
+  background-color: #bbb;
+  color: #fff;
+  cursor: default;
 }
 
-.form-hide {
+#h5FileInput {
   position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  left: 0;
+  top: 0;
+  cursor: pointer !important;
+  opacity: 0;
+  z-index: -1;
 }
 
 .preview-container {
-  margin: 10px 0;
-  text-align: center;
+  margin: 20px 0;
+}
+
+.img-container {
+  width: 320px;
+  height: 320px;
+}
+
+.img-container img {
+  width: 320px;
+  height: 320px;
+}
+
+.footer {
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
 }
