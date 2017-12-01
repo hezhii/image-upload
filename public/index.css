@@ -53,6 +53,7 @@ body {
 }
 
 .img-container {
+  position: relative;
   width: 320px;
   height: 320px;
 }
@@ -68,4 +69,69 @@ body {
 
 button {
   border: none;
+}
+
+.process {
+  position: absolute;
+  display: none;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  vertical-align: middle;
+}
+
+.process-bg {
+  width: 0;
+  height: 15px;
+  background-color: #00a854;
+  -webkit-transition: all .4s cubic-bezier(.08, .82, .17, 1) 0s;
+  transition: all .4s cubic-bezier(.08, .82, .17, 1) 0s;
+}
+
+.process-bg:before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  -webkit-animation: progress-active 2.4s cubic-bezier(.23, 1, .32, 1) infinite;
+  animation: progress-active 2.4s cubic-bezier(.23, 1, .32, 1) infinite;
+}
+
+@-webkit-keyframes progress-active {
+  0% {
+    opacity: .1;
+    width: 0
+  }
+
+  20% {
+    opacity: .5;
+    width: 0
+  }
+
+  to {
+    opacity: 0;
+    width: 100%
+  }
+}
+
+@keyframes progress-active {
+  0% {
+    opacity: .1;
+    width: 0
+  }
+
+  20% {
+    opacity: .5;
+    width: 0
+  }
+
+  to {
+    opacity: 0;
+    width: 100%
+  }
 }
