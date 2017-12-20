@@ -79,7 +79,7 @@ function handleUpload(req, res, next) {
           data: {
             width: info.width,
             height: info.height,
-            path: '/uploads/avatars/' + newName
+            path: '/uploads/' + newName
           }
         });
       }

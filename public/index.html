@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="page-wrapper">
-  <div class="main">
+  <div class="main" id="main">
     <div class="header">
       <label class="btn" for="h5FileInput">
         <input title="点击选择文件" class="form-hide" id="h5FileInput" multiple="" accept="image/*" type="file"
@@ -29,6 +29,11 @@
     </div>
     <div class="footer">
       <button id="btn_save" class="btn" disabled="disabled">保存</button>
+    </div>
+    <div class="drop-container">
+      <div class='drop-target'>
+        <h1 class='text'>拖拽到此区域上传文件</h1>
+      </div>
     </div>
   </div>
 </div>

@@ -10,8 +10,12 @@
   });
 
   document.getElementById('btn_save').onclick = function (e) {
+    uploadFile(inputElem.files[0]);
+  };
+
+  function uploadFile(file) {
     const formData = new FormData();
-    formData.append('avatar', inputElem.files[0]);
+    formData.append('avatar', file);
 
     const xhr = new XMLHttpRequest();
     xhr.open("post", '/avatar', true);
@@ -20,7 +24,9 @@
       if (xhr.status === 200) {
         const res = xhr.response;
         if (res.state === 'success') {
-          console.log('上传成功！图片地址为: ' + res.data.path);
+          const url = res.data.path;
+          document.getElementById('preview').src = url;
+          console.log('上传成功！图片地址为: ' + url);
         } else {
           alert('上传失败！' + res.message);
         }
@@ -34,9 +40,28 @@
     xhr.upload.onprogress = function (e) {
       let total = e.total;
       let loaded = e.loaded;
-      let percentage = Math.floor(loaded / total * 100) + '%';
-      document.getElementById('processBg').style.width = percentage;
+      document.getElementById('processBg').style.width = Math.floor(loaded / total * 100) + '%';
     };
     xhr.send(formData);
-  };
+  }
+
+  let count = 0;
+  document.addEventListener('dragenter', function () {
+    count++;
+    document.getElementById('main').classList.add('drag-ready');
+  });
+  document.addEventListener('dragleave', function () {
+    if (--count === 0) {
+      document.getElementById('main').classList.remove('drag-ready');
+    }
+  });
+  document.addEventListener('dragover', function (e) {
+    e.preventDefault(); // 需要在 dragover 中阻止浏览器默认行为，否则 drop 事件不会触发
+  });
+  document.addEventListener('drop', function (e) {
+    e.preventDefault();
+    count = 0;
+    document.getElementById('main').classList.remove('drag-ready');
+    uploadFile(e.dataTransfer.files[0]);
+  });
 })(window, document);
